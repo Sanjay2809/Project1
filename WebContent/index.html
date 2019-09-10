@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--Follow like this (Ex : Sanjay Rao) -->
+<title>DISPLAY THE RESULT</title>
+<link rel="stylesheet" href="kendo.common.min.css" />
+<link rel="stylesheet" href="kendo.default.min.css" />
+<link rel="stylesheet" href="kendo.default.mobile.min.css" />
+<link rel="stylesheet" href="style.css">
+
+<script src="js/jquery.min.js"></script>
+<script src="js/kendo.all.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<script type="js/jquery.min.js"></script>
+<script>
+	// Method that is providing prices of products (NAMING CONVENTION)
+	// getProductPrices : function(itemId){},
+
+	// Try to add javascript code in separate JS file
+
+	function add() {
+		var name = document.first.name.value;
+		var emailid = document.first.emailid.value;
+		var num = document.first.num.value;
+
+		if (name == null || name == "") {
+			alert(required)
+			return false;
+		} else if (emailid < 6) {
+			alert(required)
+			return false;
+		} else if (num.value <= 10) {
+			alert(required);
+			return false;
+		}
+	}
+	$(document).ready(function() {
+		$('#btn').click(function() {
+			$.ajax({
+				type : "POST",
+				url : "Servlet1",
+				data : $('#first').serialize()
+			}).done(function(data) {
+				
+			});
+		});
+	});
+	$(document).ready(function() {
+		$('#btn1').click(function() {
+			$.ajax({
+				type : "GET",
+				url : "Servlet1",
+				data : $('#first').serialize(),
+				dataType : 'json'
+			}).done(function(data) {
+				out.println(rs1.getString(1));
+			});
+		});
+	});
+</script>
+
+<body class="k-block k-shadow k-header p">
+	<center>
+		<h1>Submit Form</h1>
+	</center>
+
+
+	<!-- FORM CREATION STARTS HERE -->
+	<center>
+		<div>
+			<form id="first" onsubmit="add()"
+				class="k-block k-shadow k-header s" method="post">
+				<br>
+				 Name: <br> <input type="text" size="50" name="name"
+					required="" placeholder="Enter In Caps"
+					class="k-block k-shadow k-header"> <br> <br>
+				EmailId: <br> <input type="text" size="50" name="emailid"
+					required="" placeholder="Should Contain @"
+					class="k-block k-shadow k-header"> <br> <br>
+
+				<!-- Never apply inline CSS unless very important instead make class in separate CSS class-->
+
+				ContactNumber: <span class="required" style="color: red">*</span> <br>
+				<input type="text" size="50" name="num" required=""
+					placeholder="With Country Code" class="k-block k-shadow k-header ">
+				<br> <br>
+
+				<!-- Never call any event if not used-->
+				Gender: <br>
+				<!-- Placeholder text in small-->
+				<input type="text" size="50" name="num1" required=""
+					placeholder="Gender" class="k-block k-shadow k-header "> <br>
+				<br> <input type="submit" value="Insert" onclick="return add()"
+					class="k-button" method="post" id="btn" action="Servlet1">
+				<br>
+				<br> <input type="button" value="Retrieve" 
+					class="k-button" method="get" id="btn1" onclick="return add()"> <br>
+				<br> <input type="submit" value="Delete"
+					 class="k-button "> <br>
+				<br> <input type="submit" value="Update"
+					class="k-button "> <br>
+				<br>
+			</form>
+		</div>
+	</center>
+
+	<!-- FORM CREATION ENDS HERE -->
+
+
+</body>
+</html>
